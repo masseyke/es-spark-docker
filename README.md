@@ -26,7 +26,7 @@ That's all it takes. The build.sh command will probably take a few minutes becau
       / __/__  ___ _____/ /__
       _\ \/ _ \/ _ `/ __/  '_/
      /__ / .__/\_,_/_/ /_/\_\   version 3.2.0
-      /_/
+        /_/
      
      Using Python version 3.8.10 (default, Nov 26 2021 20:14:08)
      Spark context Web UI available at http://localhost:4040

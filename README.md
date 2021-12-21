@@ -1,6 +1,6 @@
-# Elasticsearch Spark on YARN on Docker.
+# Elasticsearch Spark on YARN on Docker
 
-This docker image lets you quickly get a development environment where you can run es-spark in spark shell or python against a real (single node) YARN cluster.
+This docker image lets you quickly create a development environment where you can run es-spark in a scala or python spark shell using a real (single node) YARN cluster.
 
 ## Build the docker image and start the container
 
@@ -22,9 +22,9 @@ That's all it takes. The build.sh command will probably take a few minutes becau
      To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
      2021-12-21 23:12:46,563 WARN yarn.Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
      Welcome to
-      ____              __
-     / __/__  ___ _____/ /__
-     _\ \/ _ \/ _ `/ __/  '_/
+       ____              __
+      / __/__  ___ _____/ /__
+      _\ \/ _ \/ _ `/ __/  '_/
      /__ / .__/\_,_/_/ /_/\_\   version 3.2.0
       /_/
      

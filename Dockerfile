@@ -9,16 +9,16 @@ WORKDIR /home/elastic
 
 USER elastic
 ARG HADOOP_VERSION=3.3.1
-ARG SPARK_VERSION=3.2.0
+ARG SPARK_VERSION=3.2.1
 ARG SPARK_HADOOP_VERSION=3.2
-ARG ELASTICSEARCH_VERSION=7.16.2
+ARG ELASTICSEARCH_VERSION=7.17.0
 ARG ES_SPARK_SPARK_VERSION=30
 ARG ES_SPARK_SCALA_VERSION=2.12
 ARG ES_SPARK_ES_VERSION=$ELASTICSEARCH_VERSION
 ARG ES_SPARK_VERSION=${ES_SPARK_SPARK_VERSION}_$ES_SPARK_SCALA_VERSION-$ES_SPARK_ES_VERSION
 
 RUN wget -q https://downloads.apache.org/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz && tar zxvf hadoop-$HADOOP_VERSION.tar.gz && rm hadoop-$HADOOP_VERSION.tar.gz
-RUN wget -q https://dlcdn.apache.org/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$SPARK_HADOOP_VERSION.tgz && tar zxvf spark-$SPARK_VERSION-bin-hadoop$SPARK_HADOOP_VERSION.tgz && rm spark-$SPARK_VERSION-bin-hadoop$SPARK_HADOOP_VERSION.tgz
+RUN wget -q https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$SPARK_HADOOP_VERSION.tgz && tar zxvf spark-$SPARK_VERSION-bin-hadoop$SPARK_HADOOP_VERSION.tgz && rm spark-$SPARK_VERSION-bin-hadoop$SPARK_HADOOP_VERSION.tgz
 RUN wget -q https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$ELASTICSEARCH_VERSION-linux-x86_64.tar.gz && tar zxvf elasticsearch-$ELASTICSEARCH_VERSION-linux-x86_64.tar.gz && rm elasticsearch-$ELASTICSEARCH_VERSION-linux-x86_64.tar.gz
 RUN wget -q https://artifacts.elastic.co/downloads/kibana/kibana-$ELASTICSEARCH_VERSION-linux-x86_64.tar.gz && tar zxvf kibana-$ELASTICSEARCH_VERSION-linux-x86_64.tar.gz && rm kibana-$ELASTICSEARCH_VERSION-linux-x86_64.tar.gz
 RUN wget -q -O ./elasticsearch-spark-$ES_SPARK_VERSION.jar https://search.maven.org/remotecontent?filepath=org/elasticsearch/elasticsearch-spark-${ES_SPARK_SPARK_VERSION}_$ES_SPARK_SCALA_VERSION/$ES_SPARK_ES_VERSION/elasticsearch-spark-$ES_SPARK_VERSION.jar

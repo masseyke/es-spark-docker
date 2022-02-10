@@ -11,7 +11,7 @@ USER elastic
 ARG HADOOP_VERSION=3.3.1
 ARG SPARK_VERSION=3.2.1
 ARG SPARK_HADOOP_VERSION=3.2
-ARG ELASTICSEARCH_VERSION=7.17.0
+ARG ELASTICSEARCH_VERSION=8.0.0
 ARG ES_SPARK_SPARK_VERSION=30
 ARG ES_SPARK_SCALA_VERSION=2.12
 ARG ES_SPARK_ES_VERSION=$ELASTICSEARCH_VERSION
@@ -34,9 +34,10 @@ ENV YARN_NODEMANAGER_USER elastic
 ENV HADOOP_HOME /home/elastic/hadoop-$HADOOP_VERSION
 ENV HADOOP_CONF_DIR=/home/elastic/hadoop-$HADOOP_VERSION/etc/hadoop/
 ENV ES_HOME /home/elastic/elasticsearch-$ELASTICSEARCH_VERSION
-ENV KIBANA_HOME /home/elastic/kibana-$ELASTICSEARCH_VERSION-linux-x86_64
+ENV KIBANA_HOME /home/elastic/kibana-$ELASTICSEARCH_VERSION
 RUN echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 RUN echo "server.host: 0.0.0.0" >> $KIBANA_HOME/config/kibana.yml
+RUN echo "xpack.security.enabled: false" >> $ES_HOME/config/elasticsearch.yml
 RUN echo 'alias es-spark="/home/elastic/spark-'$SPARK_VERSION'-bin-hadoop'$SPARK_HADOOP_VERSION'/bin/spark-shell --master yarn --deploy-mode client --jars /home/elastic/elasticsearch-spark-'$ES_SPARK_VERSION'.jar"' >> ~/.bashrc
 RUN echo 'alias es-pyspark="/home/elastic/spark-'$SPARK_VERSION'-bin-hadoop'$SPARK_HADOOP_VERSION'/bin/pyspark --master yarn --deploy-mode client --jars /home/elastic/elasticsearch-spark-'$ES_SPARK_VERSION'.jar"' >> ~/.bashrc
 COPY core-site.xml $HADOOP_HOME/etc/hadoop/
